@@ -1,0 +1,1604 @@
+<section id="contact" class="section contact"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenith Construction - Building Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ecf0f1;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #bdc3c7;
+        }
+
+        /* Mobile Navigation */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #ecf0f1;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 62, 80, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding: 2rem 0;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav ul li {
+            margin: 1rem 0;
+        }
+
+        .mobile-nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: block;
+            padding: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .mobile-nav ul li a:hover {
+            background: rgba(52, 73, 94, 0.8);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 73, 94, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23bdc3c7" width="1200" height="600"/><polygon fill="%2395a5a6" points="0,600 1200,400 1200,600"/><polygon fill="%237f8c8d" points="0,450 400,350 800,450 1200,300 1200,600 0,600"/></svg>') center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.7s;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background: #e74c3c;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.9s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        /* Services */
+        .services {
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #34495e;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        /* About */
+        .about {
+            background: #ecf0f1;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: #34495e;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            margin-top: 0.5rem;
+        }
+
+        /* Contact */
+        .contact {
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #34495e;
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: #34495e;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #e74c3c;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Stats counter animation */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+            transition: all 0.3s ease;
+        }
+
+        .stat-number.counting {
+            transform: scale(1.1);
+        }
+
+        /* Portfolio Gallery */
+        .portfolio {
+            background: white;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid #34495e;
+            color: #34495e;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #34495e;
+            color: white;
+        }
+
+        .filter-btn.active:hover {
+            background: #d4a574;
+            border-color: #d4a574;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            height: 250px;
+            background: #bdc3c7;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.1);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #bdc3c7 0%, #95a5a6 100%);
+            transition: transform 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-overlay h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .portfolio-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 400px;
+            background: #bdc3c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
+
+        .modal-info {
+            padding: 2rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Our Process Section */
+        .process {
+            background: #ecf0f1;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: white;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #d4a574 0%, #c19556 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .process-step h4 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .process-step p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Careers Section */
+        .careers {
+            background: white;
+            text-align: center;
+        }
+
+        .careers-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .careers h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .careers p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .careers-cta {
+            background: #d4a574;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .careers-cta:hover {
+            background: #c19556;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 165, 116, 0.3);
+        }
+        /* Testimonials */
+        .testimonials {
+            background: #ecf0f1;
+        }
+
+        .testimonial-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-content {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #34495e;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1rem;
+        }
+
+        .testimonial-company {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            font-weight: 400;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            background: #34495e;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: #d4a574;
+            transform: scale(1.1);
+        }
+
+        .carousel-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Form improvements */
+        .form-message {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #e74c3c;
+        }
+
+        .form-error {
+            color: #e74c3c;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">ZENITH</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        <div class="mobile-nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Building Excellence</h1>
+                <p>Professional construction services with unmatched quality and reliability</p>
+                <a href="#contact" class="cta-button">Get Free Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="fade-in">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon" role="img" aria-label="Commercial construction">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 21h18v-2H3v2zM5 19h14V5H5v14zM7 7h10v2H7V7zM7 11h10v2H7v-2zM7 15h10v2H7v-2z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Commercial Construction</h3>
+                    <p>Complete commercial building solutions from ground up, including offices, retail spaces, and industrial facilities.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon" role="img" aria-label="Residential construction">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Residential Projects</h3>
+                    <p>Custom home construction and residential renovations with attention to detail and quality craftsmanship.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon" role="img" aria-label="Renovation and remodeling">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Renovation & Remodeling</h3>
+                    <p>Transform your existing space with our comprehensive renovation and remodeling services.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon" role="img" aria-label="Project management">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Project Management</h3>
+                    <p>End-to-end project management ensuring timely completion within budget and quality standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section portfolio">
+        <div class="container">
+            <h2 class="fade-in">Our Projects</h2>
+            <div class="portfolio-filters fade-in">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="renovation">Renovation</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-in" data-project="commercial-plaza" data-category="commercial">
+                    <div class="portfolio-image">Commercial Plaza Image</div>
+                    <div class="portfolio-overlay">
+                        <h4>Metro Commercial Plaza</h4>
+                        <p>50,000 sq ft mixed-use development with retail and office spaces</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" data-project="luxury-home" data-category="residential">
+                    <div class="portfolio-image">Luxury Home Image</div>
+                    <div class="portfolio-overlay">
+                        <h4>Luxury Family Residence</h4>
+                        <p>Custom 4,500 sq ft home featuring modern architecture and sustainable materials</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" data-project="warehouse" data-category="commercial">
+                    <div class="portfolio-image">Warehouse Image</div>
+                    <div class="portfolio-overlay">
+                        <h4>Industrial Warehouse</h4>
+                        <p>75,000 sq ft distribution center with advanced logistics systems</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" data-project="school-renovation" data-category="renovation">
+                    <div class="portfolio-image">School Renovation Image</div>
+                    <div class="portfolio-overlay">
+                        <h4>School Renovation Project</h4>
+                        <p>Complete modernization of elementary school including new classrooms and facilities</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" data-project="office-building" data-category="commercial">
+                    <div class="portfolio-image">Office Building Image</div>
+                    <div class="portfolio-overlay">
+                        <h4>Corporate Headquarters</h4>
+                        <p>12-story office building with LEED Gold certification and modern amenities</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" data-project="residential-complex" data-category="residential">
+                    <div class="portfolio-image">Residential Complex Image</div>
+                    <div class="portfolio-overlay">
+                        <h4>Residential Complex</h4>
+                        <p>120-unit apartment complex with community amenities and green spaces</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="section process">
+        <div class="container">
+            <h2 class="fade-in">Our Process</h2>
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="process-number">1</div>
+                    <h4>Consultation & Planning</h4>
+                    <p>We begin by understanding your vision, requirements, and budget. Our team conducts thorough site assessments and develops comprehensive project plans.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-number">2</div>
+                    <h4>Design & Architecture</h4>
+                    <p>Our architects and designers create detailed blueprints and 3D visualizations, ensuring every aspect aligns with your expectations and local regulations.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-number">3</div>
+                    <h4>Construction & Management</h4>
+                    <p>With permits secured and materials sourced, our skilled craftsmen begin construction while our project managers ensure quality, timeline, and budget adherence.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-number">4</div>
+                    <h4>Final Handover</h4>
+                    <p>Upon completion, we conduct thorough inspections, provide comprehensive documentation, and ensure you're completely satisfied with your new space.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section testimonials">
+        <div class="container">
+            <h2 class="fade-in">What Our Clients Say</h2>
+            <div class="testimonial-carousel slide-in-left">
+                <div class="testimonial-content">
+                    "Zenith Construction exceeded our expectations in every way. Their attention to detail and commitment to quality made our commercial project a huge success. The team was professional, timely, and delivered exactly what they promised."
+                </div>
+                <div class="testimonial-author">Sarah Mitchell</div>
+                <div class="testimonial-company">CEO, TechFlow Solutions</div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn" id="prevBtn">‹</button>
+                    <button class="carousel-btn" id="nextBtn">›</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="fade-in">About Zenith Construction</h2>
+            <div class="about-content">
+                <div class="about-text slide-in-left">
+                    <p>With over two decades of experience in the construction industry, Zenith Construction has established itself as a trusted partner for projects of all scales. We pride ourselves on delivering exceptional quality, maintaining strict safety standards, and completing projects on time and within budget.</p>
+                    
+                    <p>Our team of skilled professionals brings expertise in all aspects of construction, from initial planning and design to final execution. We use the latest construction techniques and materials to ensure durability and sustainability in every project we undertake.</p>
+                </div>
+                <div class="about-stats slide-in-right">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="500">0</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="20">0</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="100">0</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">Expert Team</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="careers" class="section careers">
+        <div class="container">
+            <div class="careers-content fade-in">
+                <h2>Join Our Team</h2>
+                <h3>Build Your Career With Zenith</h3>
+                <p>We're always looking for talented professionals who share our commitment to excellence. Whether you're an experienced craftsperson, project manager, or recent graduate, we offer opportunities for growth in a collaborative environment that values safety, quality, and innovation.</p>
+                <a href="mailto:careers@zenithconstruction.com" class="careers-cta">View Open Positions</a>
+            </div>
+        </div>
+    </section>
+        <div class="container">
+            <h2 class="fade-in">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-form slide-in-left">
+                    <h3>Request a Quote</h3>
+                    <div class="form-message" id="formMessage"></div>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                            <div class="form-error" id="nameError">Please enter your name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="form-error" id="emailError">Please enter a valid email address</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                            <div class="form-error" id="phoneError">Please enter a valid phone number</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="project">Project Details</label>
+                            <textarea id="project" name="project" rows="4" placeholder="Tell us about your project..." required></textarea>
+                            <div class="form-error" id="projectError">Please describe your project</div>
+                        </div>
+                        <button type="submit" class="cta-button" id="submitBtn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info slide-in-right">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon" role="img" aria-label="Address">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Address</strong><br>
+                            123 Construction Ave<br>
+                            Building City, BC 12345
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon" role="img" aria-label="Phone">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Phone</strong><br>
+                            (555) 123-4567
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon" role="img" aria-label="Email">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Email</strong><br>
+                            info@zenithconstruction.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon" role="img" aria-label="Business hours">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Business Hours</strong><br>
+                            Mon - Fri: 8:00 AM - 6:00 PM<br>
+                            Sat: 9:00 AM - 4:00 PM
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>                                </div>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon" role="img" aria-label="Address">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Address</strong><br>
+                            123 Construction Ave<br>
+                            Building City, BC 12345
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon" role="img" aria-label="Phone">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Phone</strong><br>
+                            (555) 123-4567
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon" role="img" aria-label="Email">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Email</strong><br>
+                            info@zenithconstruction.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon" role="img" aria-label="Business hours">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Business Hours</strong><br>
+                            Mon - Fri: 8:00 AM - 6:00 PM<br>
+                            Sat: 9:00 AM - 4:00 PM
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for portfolio -->
+    <div class="modal" id="portfolioModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-image" id="modalImage">Project Image</div>
+            <div class="modal-info">
+                <h3 id="modalTitle">Project Title</h3>
+                <p id="modalDescription">Project description will appear here.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to top button -->
+    <div class="back-to-top" id="backToTop">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 14l5-5 5 5z" fill="currentColor"/>
+        </svg>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Zenith Construction. All rights reserved. | Licensed & Insured</p>
+        </div>
+    </footer>
+
+    <script>
+        // Portfolio filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filterValue = this.dataset.filter;
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.dataset.category === filterValue) {
+                        item.style.display = 'block';
+                        // Re-trigger animation
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(30px)';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Testimonials data
+        const testimonials = [
+            {
+                content: "Zenith Construction exceeded our expectations in every way. Their attention to detail and commitment to quality made our commercial project a huge success. The team was professional, timely, and delivered exactly what they promised.",
+                author: "Sarah Mitchell",
+                company: "CEO, TechFlow Solutions"
+            },
+            {
+                content: "Outstanding work on our residential renovation. They transformed our outdated home into a modern masterpiece while staying within budget. The project management was exceptional and communication was clear throughout.",
+                author: "Michael Chen",
+                company: "Homeowner"
+            },
+            {
+                content: "We've worked with many contractors over the years, but Zenith stands out for their professionalism and quality. They completed our warehouse expansion ahead of schedule and with superior craftsmanship.",
+                author: "Jennifer Rodriguez",
+                company: "Operations Director, LogiCorp"
+            },
+            {
+                content: "From initial consultation to project completion, Zenith Construction demonstrated expertise and reliability. Their innovative solutions saved us both time and money on our office renovation.",
+                author: "David Thompson",
+                company: "Facilities Manager, InnovateTech"
+            }
+        ];
+
+        let currentTestimonial = 0;
+
+        // Project data for modal
+        const projects = {
+            'commercial-plaza': {
+                title: 'Metro Commercial Plaza',
+                description: 'A comprehensive 50,000 sq ft mixed-use development featuring retail spaces on the ground floor and modern office suites on upper levels. The project incorporated sustainable building practices and achieved LEED Silver certification. Completed in 18 months with advanced HVAC systems and energy-efficient lighting throughout.'
+            },
+            'luxury-home': {
+                title: 'Luxury Family Residence',
+                description: 'Custom-designed 4,500 sq ft family home featuring contemporary architecture with natural materials. Includes smart home technology, radiant floor heating, and premium finishes throughout. The project showcased our expertise in high-end residential construction with attention to every detail.'
+            },
+            'warehouse': {
+                title: 'Industrial Warehouse',
+                description: 'State-of-the-art 75,000 sq ft distribution center designed for modern logistics operations. Features include 32-foot clear heights, LED lighting systems, advanced fire suppression, and dock-high loading bays. Completed 2 weeks ahead of schedule.'
+            },
+            'school-renovation': {
+                title: 'School Renovation Project',
+                description: 'Complete modernization of a 40-year-old elementary school including 20 new classrooms, updated HVAC systems, and accessibility improvements. The project was completed during summer break to minimize disruption to the academic schedule.'
+            },
+            'office-building': {
+                title: 'Corporate Headquarters',
+                description: '12-story office building serving as corporate headquarters for a Fortune 500 company. Features include LEED Gold certification, advanced building automation systems, executive conference facilities, and a rooftop garden. Total project value: $45 million.'
+            },
+            'residential-complex': {
+                title: 'Residential Complex',
+                description: 'Modern 120-unit apartment complex featuring studio, one, and two-bedroom units. Amenities include fitness center, rooftop terrace, underground parking, and sustainable landscaping. Project showcases our expertise in multi-family residential construction.'
+            }
+        };
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Trigger stats counter animation
+                    if (entry.target.classList.contains('slide-in-right') && entry.target.querySelector('.stat-number')) {
+                        animateStats();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Stats counter animation
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            statNumbers.forEach(stat => {
+                if (!stat.classList.contains('counted')) {
+                    const target = parseInt(stat.dataset.target);
+                    const increment = target / 50;
+                    let current = 0;
+                    
+                    stat.classList.add('counting');
+                    
+                    const updateCounter = () => {
+                        if (current < target) {
+                            current += increment;
+                            if (current > target) current = target;
+                            
+                            if (target === 100) {
+                                stat.textContent = Math.ceil(current) + '%';
+                            } else {
+                                stat.textContent = Math.ceil(current) + '+';
+                            }
+                            
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            stat.classList.remove('counting');
+                            stat.classList.add('counted');
+                        }
+                    };
+                    
+                    updateCounter();
+                }
+            });
+        }
+
+        // Mobile navigation toggle
+        const hamburger = document.querySelector('.hamburger');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            
+            // Header background change
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(44, 62, 80, 0.95)';
+                backToTop.classList.add('visible');
+            } else {
+                header.style.background = 'linear-gradient(135deg, #2c3e50 0%, #34495e 100%)';
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Testimonial carousel
+        function updateTestimonial() {
+            const testimonial = testimonials[currentTestimonial];
+            document.querySelector('.testimonial-content').textContent = `"${testimonial.content}"`;
+            document.querySelector('.testimonial-author').textContent = testimonial.author;
+            document.querySelector('.testimonial-company').textContent = testimonial.company;
+            
+            // Update button states
+            document.getElementById('prevBtn').disabled = currentTestimonial === 0;
+            document.getElementById('nextBtn').disabled = currentTestimonial === testimonials.length - 1;
+        }
+
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            if (currentTestimonial > 0) {
+                currentTestimonial--;
+                updateTestimonial();
+            }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            if (currentTestimonial < testimonials.length - 1) {
+                currentTestimonial++;
+                updateTestimonial();
+            }
+        });
+
+        // Initialize testimonial
+        updateTestimonial();
+
+        // Portfolio modal
+        const modal = document.getElementById('portfolioModal');
+        const modalClose = document.getElementById('modalClose');
+
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const projectId = this.dataset.project;
+                const project = projects[projectId];
+                
+                if (project) {
+                    document.getElementById('modalTitle').textContent = project.title;
+                    document.getElementById('modalDescription').textContent = project.description;
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        modalClose.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Form validation and submission
+        const form = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePhone(phone) {
+            const re = /^[\+]?[1-9][\d]{0,15}$/;
+            return phone === '' || re.test(phone.replace(/[\s\-\(\)]/g, ''));
+        }
+
+        function showError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(fieldId + 'Error');
+            field.parentElement.classList.add('error');
+            error.textContent = message;
+            error.style.display = 'block';
+        }
+
+        function clearError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(fieldId + 'Error');
+            field.parentElement.classList.remove('error');
+            error.style.display = 'none';
+        }
+
+        function showMessage(message, type) {
+            formMessage.textContent = message;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = 'block';
+        }
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            ['name', 'email', 'phone', 'project'].forEach(clearError);
+            formMessage.style.display = 'none';
+            
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            let isValid = true;
+            
+            // Validate name
+            if (!data.name.trim()) {
+                showError('name', 'Please enter your name');
+                isValid = false;
+            }
+            
+            // Validate email
+            if (!data.email.trim()) {
+                showError('email', 'Please enter your email');
+                isValid = false;
+            } else if (!validateEmail(data.email)) {
+                showError('email', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate phone (optional but if provided, must be valid)
+            if (data.phone && !validatePhone(data.phone)) {
+                showError('phone', 'Please enter a valid phone number');
+                isValid = false;
+            }
+            
+            // Validate project description
+            if (!data.project.trim()) {
+                showError('project', 'Please describe your project');
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Simulate form submission
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Simulate API call delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                showMessage('Thank you for your inquiry! We will get back to you within 24 hours.', 'success');
+                form.reset();
+            } catch (error) {
+                showMessage('Sorry, there was an error sending your message. Please try again.', 'error');
+            } finally {
+                submitBtn.textContent = 'Send Message';
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerOffset = 80;
+                const elementPosition = target.offsetTop;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+            }
+        });
+
+        // Auto-advance testimonials every 8 seconds
+        setInterval(() => {
+            if (currentTestimonial < testimonials.length - 1) {
+                currentTestimonial++;
+            } else {
+                currentTestimonial = 0;
+            }
+            updateTestimonial();
+        }, 8000);
+    </script>
+</body>
+</html>
